@@ -1,0 +1,189 @@
+
+<!-- <div class="jumbotron">
+  <h1>Employees Managment Tool</h1>
+</div>
+-->
+<div class="row">
+  <div class="col-md-8">
+   <h2>Employees List</h2>
+   <button class="btn btn-info pull-right">New Employee</button>
+
+   <div class="row">
+     <div class="col-lg-12" data-role="filters">
+      <h3>Filters</h3>
+      <div class="alert examples-dismissable alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p>Examples:</p>
+        <ul>
+          <li>
+           Skills on specific location: <strong>Backbone.js</strong> @ <strong>Rosario</strong>.
+         </li>
+         <li>
+           Someone on a location: <strong>Pedro</strong> @ <strong>Development</strong>.
+         </li>
+         <li>
+           All the people on a project: <strong>Cool Project</strong>.
+         </li>
+         <li>
+           Skill with availability: <strong>Backbone.js</strong> - <strong>Available</strong>.
+         </li>
+       </ul>
+     </div>
+     <form role="form">
+      <div class="row filters-form">
+
+        <div class="col-md-4">
+          <label for="filterBy" class="control-label">Filter by:</label>
+          <input type="search" class="form-control" id="filterBy" placeholder="Name, Skills, Projects...">
+        </div>
+
+        <div class="col-md-3">
+          <label for="areaFilter" class="control-label">Area:</label>
+          <select class="form-control" id="areaFilter">
+            <option value="all">All</option>
+            <option value="dev">Development</option>
+            <option value="qa">Quality</option>
+            <option value="hhrr">HHRR</option>
+            <option value="mgt">Management</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+         <label for="locationFilter" class="control-label">Location:</label>
+         <select class="form-control" id="locationFilter">
+          <option value="all">All</option>
+          <optgroup label="Argentina">
+            <option value="allarg">All Argentina</option>
+            <option value="ros">Rosario</option>
+            <option value="ba">Buenos Aires</option>
+            <option value="par">Paraná</option>  
+          </optgroup>
+          <optgroup label="Colombia">
+            <option value="mdl">Medellín</option>
+          </optgroup>
+          <optgroup label="Uruguay">
+            <option value="mdo">Montevideo</option>
+          </optgroup>
+          <optgroup label="USA">
+            <option value="us">USA</option>  
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label for="availabilityFilter" class="control-label">Availability:</label>
+        <select class="form-control" id="availabilityFilter">
+          <option value="all">All</option>
+          <option value="full">Full</option>
+          <option value="part">Partial</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+
+    </div>
+
+
+  </form>
+
+</div>
+
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12" data-role="list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name and Last Name</th>
+          <th>Current Project/s</th>
+          <th>Area</th>
+          <th>Location</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employeesList">
+          <td>{{employee.availability}}</td>
+          <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo" ng-click="selectEmployee(employee)">{{employee.name}} {{employee.lastname}}</a></td>
+          <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
+          <td>{{employee.area}}</td>
+          <td>{{employee.location}}</td>
+          <td><a href="#" ng-click="editEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a href="#" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Selected employee: {{selectedEmployee}}</p>
+  </div>
+</div>
+
+
+</div>
+
+<div class="col-md-4 tools-set">
+  <h2>Tools</h2>
+  <h3>Quick filters <small>(Finds all)</small></h3>
+  <h4>Availability</h4>
+  <ul class="list-inline">
+    <li>
+      <a href="" class="btn btn-default btn-sm">Available</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Parcial availability</a>
+    </li>
+  </ul>
+
+  <h4>Area</h4>
+  <ul class="list-inline">
+    <li>
+      <a href="" class="btn btn-default btn-sm">Development</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Quality</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">HHRR</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Management</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Sales</a>
+    </li>
+  </ul>
+
+  <h4>Location</h4>
+  <ul class="list-inline">
+    <li>
+      <a href="" class="btn btn-default btn-sm">Rosario</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Buenos Aires</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Paraná</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Montevideo</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">Medellín</a>
+    </li>
+    <li>
+      <a href="" class="btn btn-default btn-sm">USA</a>
+    </li>
+  </ul>
+
+</div>
+
+
+
+</div>
+
+
+<!-- Modal -->
+<div ng-include="'views/employee.html'" ng-controller="ViewEmployee"></div>
