@@ -2,7 +2,11 @@
 
 angular.module('managementApp')
   .controller('EmployeesCtrl', function ($scope, employees) {
-    
+ 
+    $scope.filterBy = {
+        search: ''
+    };
+   
     $scope.employeesList = employees.query();
 
     var selectedEmployee = null;
