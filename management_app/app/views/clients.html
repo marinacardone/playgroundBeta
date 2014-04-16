@@ -5,54 +5,40 @@
 -->
 <div class="row">
   <div class="col-md-8">
-   <h2>Employees List</h2>
-   <button class="btn btn-info pull-right">New Employee</button>
+   <h2>Accounts List</h2>
+   <button class="btn btn-info pull-right">New Account</button>
 
    <div class="row">
      <div class="col-lg-12" data-role="filters">
       <h3>Filters</h3>
-      <div class="alert examples-dismissable alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <p>Examples:</p>
-        <ul>
-          <li>
-           Skills on specific location: <strong>Backbone.js</strong> @ <strong>Rosario</strong>.
-         </li>
-         <li>
-           Someone of a specific area: <strong>Pedro</strong> @ <strong>Development</strong>.
-         </li>
-         <li>
-           All the people on a project: <strong>Cool Project</strong>.
-         </li>
-         <li>
-           Skill with availability: <strong>Backbone.js</strong> - <strong>Available</strong>.
-         </li>
-       </ul>
-     </div>
      
      <div class="row filters-form">
 
         <div class="col-md-4">
           <label for="filterBy" class="control-label">Filter by:</label>
-          <input type="search" name="search" ng-model="filterBy.search" class="form-control" placeholder="Name, Skills, Projects..."
+          <input type="search" name="search" ng-model="filterBy.search" class="form-control" placeholder="Name, Client..."
            >
         </div>
 
         <div class="col-md-3">
-          <label for="area" class="control-label">Area:</label>
-          <select class="form-control" id="area" name="area" ng-model="filterBy.area" ng-options="area.name for area in areaList">
+          <label for="area" class="control-label">Client Area:</label>
+          <select class="form-control" id="area" name="area">
           </select>
         </div>
 
         <div class="col-md-3">
-         <label for="locationFilter" class="control-label">Location:</label>
-         <select class="form-control" id="locationFilter" name="locationFilter" ng-model="filterBy.location" ng-options="location.city for location in locationList">
+         <label for="locationFilter" class="control-label">Partner:</label>
+         <select class="form-control" id="locationFilter" name="locationFilter">
         </select>
       </div>
 
       <div class="col-md-2">
-        <label for="availabilityFilter" class="control-label">Availability:</label>
-        <select class="form-control" id="availabilityFilter" name="availabilityFilter" ng-model="filterBy.availability" ng-options="availability.name for availability in availabilityList">
+        <label for="availabilityFilter" class="control-label">SM:</label>
+        <select class="form-control" id="availabilityFilter">
+          <option value="all">All</option>
+          <option value="full">Full</option>
+          <option value="part">Partial</option>
+          <option value="none">None</option>
         </select>
       </div>
 
@@ -69,22 +55,24 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Available</th>
-          <th>Name and Last Name</th>
-          <th>Current Project/s</th>
-          <th>Area</th>
-          <th>Location</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Client</th>
+          <th>Geo</th>
+          <th>Partner</th>
+          <th>SM</th>
           <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="employee in employeesList | filter:{name: filterBy.search} | location:filterBy | area:filterBy | availability:filterBy">
-          <td>{{employee.availability}}</td>
-          <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo" ng-click="selectEmployee(employee)">{{employee.name}} {{employee.lastname}}</a></td>
-          <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
-          <td>{{employee.area}}</td>
-          <td>{{employee.location.city}}</td>
+        <tr ng-repeat="project in projectsList">
+          <td>{{project.code}}</td>
+          <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo">{{project.name}}</a></td>
+          <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo">{{project.client}}</a></td>
+          <td>{{project.zone}}</td>
+          <td>{{project.partner}}</td>
+          <td>{{project.sm}}</td>
           <td><a href="#" ng-click="editEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
           <td><a href="#" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
