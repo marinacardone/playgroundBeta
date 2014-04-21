@@ -78,37 +78,3 @@ body {
   }
 }
 
-
-/* APP */
-.container-fluid{
-  overflow: hidden;
-}
-.header, .content-wrapper, .footer{
-  padding: 0 20px;
-}
-.footer p{
-  margin-top: 10px;
-}
-
-/* FILTERS */
-.filters-form{
-  margin-bottom: 20px;
-}
-
-.filters-form .control-label, .filters-form .form-control{
-  width: 100%;
-}
-
-.examples-dismissable{
-  background:#f6f6f6; 
-}
-
-/* TOOLS */
-.tools-set .list-inline li{
-  margin-bottom: 10px;
-}
-
-/* test */
-html[data-useragent*='MSIE 10.0'] body {
-  background: blue;
-}

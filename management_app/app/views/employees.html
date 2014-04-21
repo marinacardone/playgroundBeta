@@ -5,14 +5,15 @@
 -->
 <div class="row">
   <div class="col-md-8">
-   <h2>Employees List</h2>
-   <button class="btn btn-info pull-right">New Employee</button>
+   <h2>Employees List </h2>
+   <p>Currently we have: {{employeesList.length}} employees.</p>
+   <button class="btn btn-info pull-right new-employee">New Employee</button>
 
    <div class="row">
      <div class="col-lg-12" data-role="filters">
       <h3>Filters</h3>
-      <div class="alert examples-dismissable alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="alert examples-dismissable alert-dismissable" ng-show="examplesVisibility">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" ng-click="dismissExamples()">&times;</button>
         <p>Examples:</p>
         <ul>
           <li>
@@ -66,30 +67,32 @@
 
 <div class="row">
   <div class="col-lg-12" data-role="list">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Available</th>
-          <th>Name and Last Name</th>
-          <th>Current Project/s</th>
-          <th>Area</th>
-          <th>Location</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="employee in employeesList | filter:{name: filterBy.search} | location:filterBy | area:filterBy | availability:filterBy">
-          <td>{{employee.availability}}</td>
-          <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo" ng-click="selectEmployee(employee)">{{employee.name}} {{employee.lastname}}</a></td>
-          <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
-          <td>{{employee.area}}</td>
-          <td>{{employee.location.city}}</td>
-          <td><a href="#" ng-click="editEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
-          <td><a href="#" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Available</th>
+            <th>Name and Last Name</th>
+            <th>Current Project/s</th>
+            <th>Area</th>
+            <th>Location</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="employee in employeesList | filter:{name: filterBy.search} | location:filterBy | area:filterBy | availability:filterBy">
+            <td>{{employee.availability}}</td>
+            <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo" ng-click="selectEmployee(employee)">{{employee.name}} {{employee.lastname}}</a></td>
+            <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
+            <td>{{employee.area}}</td>
+            <td>{{employee.location.city}}</td>
+            <td><a href="#" ng-click="editEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="#" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -158,4 +161,4 @@
 
 
 <!-- Modal -->
-<div ng-include="'views/employee.html'" ng-controller="ViewEmployee"></div>
+<div ng-include="'views/employee.html'"></div>

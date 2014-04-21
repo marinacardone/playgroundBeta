@@ -19,7 +19,7 @@ angular.module('managementApp')
         {
             name : "None"
         }
-    ];
+    ];  
 
     $scope.filterBy = {
         search: '',
@@ -28,14 +28,15 @@ angular.module('managementApp')
         availability : $scope.availabilityList[0]
     };
    
+    var examplesVisibility = true;
     var selectedEmployee = null;
 
     $scope.selectEmployee = function(employee){
 
         console.log('selected employee > '+JSON.stringify(employee));
 
-        selectedEmployee = employee
-    }
+        selectedEmployee = employee;
+    };
 
     $scope.displayCurrentProjects = function(currentproject){
         var currentProjects = '';
@@ -47,6 +48,22 @@ angular.module('managementApp')
         }
         return currentProjects;
     };
+
+    $scope.dismissExamples = function(){
+        document.cookie="examples=hide";
+    };
+
+    // change examples visibility based on cookie
+    $scope.$on('$viewContentLoaded', function(){
+        var cookieJar = document.cookie;
+
+        var examplesCookie = cookieJar.split('examples=')[1];
+
+        if(examplesCookie == 'hide'){
+            examplesVisibility = false;
+        }
+
+    });
 
 
   });
