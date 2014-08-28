@@ -1,9 +1,28 @@
 <div class="header" data-role="appHeader">
-  <ul class="nav nav-pills pull-right">
-    <li ng-class="{active: isCurrentPage('/')}"><a ng-href="#">Home</a></li>
-    <li ng-class="{active: isCurrentPage('/accounts')}"><a ng-href="/#/clients.html">Accounts</a></li>
-    <li ng-class="{active: isCurrentPage('/employees')}"><a ng-href="/#/employees.html">Employees</a></li>
-    <li ng-class="{active: isCurrentPage('/recruiting')}"><a ng-href="/#/recruiting.html">Recruiting</a></li>
-  </ul>
-  <h3 class="text-muted">Employees Managment Tool</h3>
+
+    <ul class="nav nav-pills pull-right">
+        <li ng-class="{active: isCurrentPage('/')}"><a ng-href="#">Home</a></li>
+        <li ng-class="{active: isCurrentPage('/employees') || isCurrentPage('/add_edit_employee')}"><a ng-href="/#/employees">Employees</a></li>
+        <li ng-class="{active: isCurrentPage('/projects') || isCurrentPage('/edit_project')}"><a ng-href="/#/projects">Projects</a></li>
+        <li ng-class="{active: isCurrentPage('/recruiting') || isCurrentPage('/recruiting/tech_feedback')}"><a ng-href="/#/recruiting">Recruiting</a></li>
+    </ul>
+    <h3>Management Tool</h3>
+
+    <!-- remove this -->
+    <form role="form" class="form-horizontal">
+
+        <div class="form-group">
+          <label for="int1" class="col-sm-3 control-label">Change User Level:</label>
+          <div class="col-sm-2">
+            <select class="form-control" id="int1">
+              <option value="1">Manager</option>
+              <option value="2">Sales</option>
+              <option value="3">HR</option>
+              <option value="4">Interviewers</option>
+              <option value="5">User</option>
+          </select>
+      </div>
+
+    </form>
+    <!-- /remove this -->
 </div>

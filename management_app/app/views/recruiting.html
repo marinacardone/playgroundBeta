@@ -1,35 +1,131 @@
+<!-- content -->
 <div class="row">
+  <div class="col-md-9">
 
-  <div class="col-md-8">
-    <h2>Open Positions</h2>
-    <dl>
-      <dt>Java SSr. </dt>
-      <dd>
-        <ul class="list-inline">
-          <li><span class="label label-default">Medellin</span></li>
-        </ul> 
-        <ul class="list-unstyled">
-          <li>+2 years of experience</li>
-          <li>English Intermediate</li>
-        </ul>
-      </dd>
-    </dl>
+    <section id="open-positions">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Open Positions</h2>
+          <div class="row">
+            <div class="col-md-7">
+              <open-positions></open-positions>
+            </div>
+            <div class="col-md-5">
+              <form role="form">
+                <legend>Add Open Position</legend>
+                <div class="form-group">
+                  <label for="posName">Position Name:</label>
+                  <input type="text" class="form-control" id="posName" placeholder="UI Developer">
+                </div>
+                <div class="form-group">
+                  <label for="area">Area:</label>
+                  <select class="form-control" id="area" ng-model="mainArea">
+                    <option value="dev">Development</option>
+                    <option value="qa">Quality</option>
+                    <option value="hhrr">HR</option>
+                    <option value="mgt">Management</option>
+                    <option value="sales">Sales</option>
+                  </select>
+                </div>
+                <div class="form-group" ng-show="mainArea">
+                  <label for="subArea">Sub Area:</label>
+                  <select class="form-control" id="subArea" ng-model="subArea">
+                    <option value="dev">Development</option>
+                    <option value="qa">Quality</option>
+                    <option value="hhrr">HR</option>
+                    <option value="mgt">Management</option>
+                    <option value="sales">Sales</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="location">Seniority:</label>
+                  <select class="form-control" id="location">
+                    <option value="jr">Associate</option>
+                    <option value="ssr2">SSr Level 2</option>
+                    <option value="ssr1">SSr Level 1</option>
+                    <option value="sr2">Sr Level 2</option>
+                    <option value="sr1">Sr Level 1</option>
+                    <option value="tl">Team Lead</option>
+                    <option value="ref">Referent</option>
+                    <option value="none">Not required</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="location">Location:</label>
+                  <select class="form-control" id="location">
+                    <optgroup label="Argentina">
+                      <option value="ros">Rosario</option>
+                      <option value="ba">Buenos Aires</option>
+                      <option value="par">Paraná</option>  
+                    </optgroup>
+                    <optgroup label="Colombia">
+                      <option value="mdl">Medellín</option>
+                    </optgroup>
+                    <optgroup label="Uruguay">
+                      <option value="mdo">Montevideo</option>
+                    </optgroup>
+                    <optgroup label="USA">
+                      <option value="us">USA</option>  
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="form-group" ng-show="subArea">
+                  <label for="mainTech">Main Technology:</label>
+                  <select class="form-control" id="mainTech" ng-model="mainTech">
+                    <option value="jr">Java</option>
+                    <option value="ssr2">.net</option>
+                    <option value="ssr1">Ruby</option>
+                    <option value="sr2">PHP</option>
+                    <option value="none">Not required</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="skills">Skills:</label>
+                  <textarea class="form-control" rows="3" name="skills" id="skills"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <upcoming-intreviews></upcoming-intreviews>
+    
+    <section id="candidates">
+      <div class="row">
+        <div class="col-md-12">
+         <candidates-database></candidates-database>
+        </div>
+      </div>
+    </section>
   </div>
-
-  <div class="col-md-4">
-    <h2>Technical Interviewers</h2>
+  <!-- /. main -->
+  <!-- aside -->
+  <div class="col-md-3">
+    <h2>Tech Interviewers</h2>
 
     <h3>FrontEnd</h3>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
 
-    <h3>Java</h3>
+    <h3>Backend</h3>
+    <h5>Java</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
-
-    <h3>.net</h3>
+    <h5>.net</h5>
+    <ul>
+      <li><a href="">Juan Perez</a></li>
+    </ul>
+    <h5>Ruby</h5>
+    <ul>
+      <li><a href="">Juan Perez</a></li>
+    </ul>
+    <h5>PHP</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
@@ -43,37 +139,29 @@
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
-
-    <h3>Automation</h3>
-    <ul>
-      <li><a href="">Juan Perez</a></li>
-    </ul>
-
-    <h3>Ruby</h3>
-    <ul>
-      <li><a href="">Juan Perez</a></li>
-    </ul>
-
-    <h3>PHP</h3>
+    <h5>Automation</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
 
     <h3>Mobile</h3>
+    <h5>Android</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
-
-    <h3>iOS</h3>
+    <h5>iOS</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
-
-    <h3>Android</h3>
+    <h5>PhoneGap / Titanium</h5>
     <ul>
       <li><a href="">Juan Perez</a></li>
     </ul>
-
   </div>
-
+  <!-- /. aside -->
 </div>
+<!-- /. content -->
+
+<!-- Modals -->
+<candidate-info></candidate-info>
+<candidate-tech></candidate-tech>

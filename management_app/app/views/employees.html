@@ -5,59 +5,73 @@
 -->
 <div class="row">
   <div class="col-md-8">
-   <h2>Employees List </h2>
-   <p>Currently we have: {{employeesList.length}} employees.</p>
-   <button class="btn btn-info pull-right new-employee">New Employee</button>
+   <h2>Employees List</h2>
+   <a class="btn btn-info pull-right" ng-href="/#/add_edit_employee">New Employee</a>
 
    <div class="row">
      <div class="col-lg-12" data-role="filters">
       <h3>Filters</h3>
-      <div class="alert examples-dismissable alert-dismissable" ng-show="examplesVisibility">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" ng-click="dismissExamples()">&times;</button>
+      <div class="alert examples-dismissable alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <p>Examples:</p>
         <ul>
           <li>
            Skills on specific location: <strong>Backbone.js</strong> @ <strong>Rosario</strong>.
          </li>
          <li>
-           Someone of a specific area: <strong>Pedro</strong> @ <strong>Development</strong>.
+           Someone on a location: <strong>Pedro</strong> @ <strong>Development</strong>.
          </li>
          <li>
            All the people on a project: <strong>Cool Project</strong>.
          </li>
-         <li>
-           Skill with availability: <strong>Backbone.js</strong> - <strong>Available</strong>.
-         </li>
        </ul>
      </div>
-     
-     <div class="row filters-form">
+     <form role="form">
+      <div class="row filters-form">
 
         <div class="col-md-4">
           <label for="filterBy" class="control-label">Filter by:</label>
-          <input type="search" name="search" ng-model="filterBy.search" class="form-control" placeholder="Name, Skills, Projects..."
-           >
+          <input type="search" class="form-control" id="filterBy" placeholder="Name, Skills, Projects..." ng-model="filterInput">
         </div>
 
         <div class="col-md-3">
-          <label for="area" class="control-label">Area:</label>
-          <select class="form-control" id="area" name="area" ng-model="filterBy.area" ng-options="area.name for area in areaList">
+          <label for="areaFilter" class="control-label">Area:</label>
+          <select class="form-control" id="areaFilter" ng-model="filterArea">
+            <option value="all">All</option>
+            <option value="Development">Development</option>
+            <option value="Quality">Quality</option>
+            <option value="HHRR">HHRR</option>
+            <option value="Accountant">Accountant</option>
+            <option value="Management">Management</option>
           </select>
         </div>
 
         <div class="col-md-3">
          <label for="locationFilter" class="control-label">Location:</label>
-         <select class="form-control" id="locationFilter" name="locationFilter" ng-model="filterBy.location" ng-options="location.city for location in locationList">
-        </select>
-      </div>
-
-      <div class="col-md-2">
-        <label for="availabilityFilter" class="control-label">Availability:</label>
-        <select class="form-control" id="availabilityFilter" name="availabilityFilter" ng-model="filterBy.availability" ng-options="availability.name for availability in availabilityList">
+         <select class="form-control" id="locationFilter" ng-model="filterLocation">
+          <option value="all">All</option>
+          <optgroup label="Argentina">
+            <option value="Argentina">All Argentina</option>
+            <option value="Rosario">Rosario</option>
+            <option value="BuenosAires">Buenos Aires</option>
+            <option value="Parana">Paraná</option>  
+          </optgroup>
+          <optgroup label="Colombia">
+            <option value="Medellin">Medellín</option>
+          </optgroup>
+          <optgroup label="Uruguay">
+            <option value="Montevideo">Montevideo</option>
+          </optgroup>
+          <optgroup label="USA">
+            <option value="USA">USA</option>  
+          </optgroup>
         </select>
       </div>
 
     </div>
+
+
+  </form>
 
 </div>
 
@@ -67,32 +81,28 @@
 
 <div class="row">
   <div class="col-lg-12" data-role="list">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Available</th>
-            <th>Name and Last Name</th>
-            <th>Current Project/s</th>
-            <th>Area</th>
-            <th>Location</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="employee in employeesList | filter:{name: filterBy.search} | location:filterBy | area:filterBy | availability:filterBy">
-            <td>{{employee.availability}}</td>
-            <td><a href="" data-toggle="modal" data-target="#employeeQuickInfo" ng-click="selectEmployee(employee)">{{employee.name}} {{employee.lastname}}</a></td>
-            <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
-            <td>{{employee.area}}</td>
-            <td>{{employee.location.city}}</td>
-            <td><a href="#" ng-click="editEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            <td><a href="#" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name and Last Name</th>
+          <th>Current Project/s</th>
+          <th>Area</th>
+          <th>Location</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employeesList | filter:filterArea | filter:filterInput | filter:filterLocation | filter:availabilityFilter">
+          <td><a href="" ng-click="selectEmployee(employee)" data-toggle="modal" data-target="#employeeQuickInfo">{{employee.name}} {{employee.lastname}}</a></td>
+          <td>{{ displayCurrentProjects(employee.currentProjects) }}</td>
+          <td>{{employee.area}}</td>
+          <td>{{employee.location}}</td>
+          <td><a href="" ng-href="/#/add_edit_employee" ng-click="selectEmployee(employee)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a href="" ng-confirm-click="Do you want to remove this employee?" ng-click="removeEmployee(employee)"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
@@ -102,15 +112,6 @@
 <div class="col-md-4 tools-set">
   <h2>Tools</h2>
   <h3>Quick filters <small>(Finds all)</small></h3>
-  <h4>Availability</h4>
-  <ul class="list-inline">
-    <li>
-      <a href="" class="btn btn-default btn-sm">Available</a>
-    </li>
-    <li>
-      <a href="" class="btn btn-default btn-sm">Parcial availability</a>
-    </li>
-  </ul>
 
   <h4>Area</h4>
   <ul class="list-inline">
@@ -161,4 +162,4 @@
 
 
 <!-- Modal -->
-<div ng-include="'views/employee.html'"></div>
+<employee-details></employee-details>

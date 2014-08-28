@@ -1,0 +1,95 @@
+<!-- Modal -->
+<div class="modal fade" id="projectQuickInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">{{ selectedProject.clientName }} <small>Status: {{ selectedProject.projectStatus }}</small></h4>
+      </div>
+      <div class="modal-body">
+        <div class="pull-right" data-role="UserImage">
+          <img src="images/yeoman.png" class="img-rounded" alt="User Image">
+        </div>
+        <dl>
+          <dt>Location:</dt>
+          <dd>{{ selectedProject.clientLocation }}</dd>
+
+          <dt>Sector:</dt>
+          <dd>{{ selectedProject.clientSector }}</dd> 
+
+          <dt>Website:</dt>
+          <dd><a href="http://{{selectedProject.clientwebsite}}" target="_blank">{{selectedProject.clientWebsite}}</a></dd>
+
+          <dt>Start date:</dt>
+          <dd>{{ selectedProject.startDate }}</dd>
+
+          <dt>End date:</dt>
+          <dd>{{ selectedProject.endDate }}</dd>
+        </dl>
+
+        <hr>
+        
+        <h4>Contact Information:</h4>
+        <dl>
+          <div ng-repeat="contact in selectedProject.clientContactInfo">
+            <dt>{{ contact.name }}</dt>
+            <dd>
+             <ul>
+              <li>skype: {{ contact.skype }}</li>
+              <li>phone: {{ contact.phone }}</li>
+              <li>email: {{ contact.email }}</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+
+      <hr>
+
+      <h4>Velocity Partners:</h4>
+      <dl>
+        <dt>Sales Partner:</dt>
+        <dd>{{ selectedProject.salesPartner }}</dd>
+        <dt>Solutions Manager:</dt>
+        <dd>{{ selectedProject.solutionsManager }}</dd>
+        <dt>Team:</dt>
+        <dd>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Area</th>
+                <th>Position</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="teammember in selectedProject.teamMembers">
+                <td>{{ teammember.name }}</td>
+                <td>{{ teammember.area }}</td>
+                <td>{{ teammember.position }}</td>
+                <td>{{ teammember.location }}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </dd>
+      </dl>
+
+      <hr>
+
+      <h4>Project reviews:</h4>
+      <dl>
+        <dt>August 20, 2014</dt>
+        <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae tortor non dolor dapibus posuere non ac mi. Mauris mattis varius tortor faucibus convallis. Praesent auctor justo lectus, et feugiat elit suscipit eget. Nulla facilisi. Ut sollicitudin felis at lorem ullamcorper eleifend</dd>
+      </dl>
+ 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Edit Project</button>
+  </div>
+</div>
+</div>
+</div>
+

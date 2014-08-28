@@ -1,31 +1,44 @@
 'use strict';
-
-angular
-  .module('managementApp', [
+(function(){
+  var managementApp = angular.module('managementApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+  managementApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/accounts', {
-        templateUrl: 'views/clients.html',
-        controller: 'AccountsCtrl'
+        templateUrl: 'views/main.html'
       })
       .when('/employees', {
         templateUrl: 'views/employees.html',
         controller: 'EmployeesCtrl'
       })
-       .when('/recruiting', {
+      .when('/add_edit_employee', {
+        templateUrl: 'views/employees/edit_employee.html',
+        controller: 'EmployeesCtrl'
+      })
+      .when('/projects', {
+        templateUrl: 'views/projects.html',
+        controller: 'ProjectsCtrl'
+      })
+      .when('/edit_project', {
+        templateUrl: 'views/projects/edit_project.html',
+        controller: 'ProjectsCtrl'
+      })
+      .when('/recruiting', {
         templateUrl: 'views/recruiting.html',
-        controller: 'recruiting'
+        controller: 'RecruitingCtrl'
+      })
+      .when('/recruiting/tech_feedback', {
+        templateUrl: 'views/recruiting/tech_feedback.html',
+        controller: 'RecruitingCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+  // make the app variable global
+  window.managementApp = managementApp;
+})();

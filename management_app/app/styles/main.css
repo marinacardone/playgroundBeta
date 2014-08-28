@@ -78,3 +78,82 @@ body {
   }
 }
 
+
+/* APP */
+.alert{
+  background: #ed1d24;
+}
+.btn-info{
+  background-color: #5bc5bf;
+  border-color:#39b3ac; 
+}
+.container-fluid{
+  overflow: hidden;
+}
+.header, .content-wrapper, .footer{
+  padding: 0 20px;
+}
+.footer p{
+  margin-top: 10px;
+}
+
+/* FILTERS */
+.filters-form{
+  margin-bottom: 20px;
+}
+
+.filters-form .control-label, .filters-form .form-control{
+  width: 100%;
+}
+
+.examples-dismissable{
+  background:#f6f6f6; 
+}
+
+/* TOOLS */
+.tools-set .list-inline li{
+  margin-bottom: 10px;
+}
+
+/* test */
+html[data-useragent*='MSIE 10.0'] body {
+  background: blue;
+}
+
+/* open positions */
+.op-module{
+  border: 1px solid #ddd;
+  margin-right: 1%;
+  width: 49%;
+}
+.op-module button{
+  margin-bottom: 20px;
+}
+
+input[type='range'] {
+    height:7px;
+    width: 100%;
+}
+
+/* RECRUITING */
+legend small{
+  color: #a3a3a3;
+  font-size: 70%;
+}
+.candidate-eval td{
+  text-align: center;
+}
+.candidate-eval tbody tr>th{
+  width: 160px;
+}
+.top-space{
+  margin-top: 40px;
+}
+.bottom-space{
+  margin-bottom: 40px;
+}
+
+.interview-feedback dd{
+  margin-bottom: 20px;
+  width: 95%;
+}

@@ -1,0 +1,242 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12 bottom-space">
+        <h2>Employee Information</h2>
+        <button type="button" class="btn btn-info" ng-click="selectEmployee(employee)" data-toggle="modal" data-target="#employeeQuickInfo">Preview Employee</button>
+      </div>
+    </div>
+    <form role="form" class="form-horizontal" ng-submit="updateEmployee()" novalidate>
+      <div class="row">
+        <div class="col-md-6">
+         <fieldset class="bottom-space">
+          <legend>Personal Info</legend>
+          <div class="form-group">
+            <label for="firstName" class="col-sm-4 control-label">First Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="firstName" placeholder="Jack" ng-model="name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="col-sm-4 control-label">Last Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="lastName" placeholder="Smith" ng-model="lastname" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location" class="col-sm-4 control-label">Location:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="location" ng-model="location">
+                <optgroup label="Argentina">
+                  <option value="ros">Rosario</option>
+                  <option value="ba">Buenos Aires</option>
+                  <option value="par">Paraná</option>  
+                </optgroup>
+                <optgroup label="Colombia">
+                  <option value="mdl">Medellín</option>
+                </optgroup>
+                <optgroup label="Uruguay">
+                  <option value="mdo">Montevideo</option>
+                </optgroup>
+                <optgroup label="USA">
+                  <option value="us">USA</option>  
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="userPicture" class="col-sm-4 control-label">Picture:</label>
+            <div class="col-sm-8">
+              <input type="file" class="form-control" id="userPicture" ng-model="picture">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location" class="col-sm-4 control-label">Area:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="location" ng-model="area">
+                <option value="dev">Development</option>
+                <option value="qa">Quality</option>
+                <option value="hhrr">HR</option>
+                <option value="mgt">Management</option>
+                <option value="sales">Sales</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location" class="col-sm-4 control-label">Seniority:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="location" ng-model="seniority">
+                <option value="jr">Associate</option>
+                <option value="ssr2">SSr Level 2</option>
+                <option value="ssr1">SSr Level 1</option>
+                <option value="sr2">Sr Level 2</option>
+                <option value="sr1">Sr Level 1</option>
+                <option value="tl">Team Lead</option>
+                <option value="ref">Referent</option>
+                <option value="none">Not required</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-4 control-label">Email:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="email" placeholder="jsmith@velocitypartners.net" ng-model="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="skype" class="col-sm-4 control-label">Skype account:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="skype" placeholder="jack.smith.vp" ng-model="skype">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="passport" class="col-sm-4 control-label">Passport:</label>
+            <div class="col-sm-1">
+              <input type="checkbox" ng-model="passport">
+            </div>
+            <div ng-show="passport">
+              <label for="passportExpiration" class="col-sm-2 control-label">Expiration:</label>
+              <div class="col-sm-5">
+                <input type="date" class="form-control" id="passportExpiration" ng-model="passportExpiration">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="usvisa" class="col-sm-4 control-label">US Visa:</label>
+            <div class="col-sm-1">
+              <input type="checkbox" ng-model="usvisa">
+            </div>
+            <div ng-show="usvisa">
+              <label for="usvisaExpiration" class="col-sm-2 control-label">Expiration:</label>
+              <div class="col-sm-5">
+                <input type="date" class="form-control" id="usvisaExpiration" ng-model="usvisaExpiration">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Education Info</legend>
+          <div class="form-group">
+            <label for="educationTitle" class="col-sm-4 control-label">Title:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="educationTitle" placeholder="Systems Engineer" ng-model="education.title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="educationLevel" class="col-sm-4 control-label">Level:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="educationLevel" ng-model="education.level">
+                <option value="bachelor">Bachelor Degree</option>
+                <option value="engineer">College Degree</option>
+                <option value="postGraduate">Postgraduate</option>
+                <option value="phd">Phd</option>
+                <option value="none">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="educationInstitution" class="col-sm-4 control-label">Institution:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="educationInstitution" placeholder="Universidad Nacional de Rosario" ng-model="education.school">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="educationLevel" class="col-sm-4 control-label">Status:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="educationLevel" ng-model="education.level">
+                <option value="completed">Completed</option>
+                <option value="incourse">In course</option>
+                <option value="droped">Droped</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default pull-right">Add Education</button>
+        </fieldset>
+      </div>
+      
+      <!-- 2nd column -->
+      
+      <div class="col-md-6">
+
+        <fieldset class="bottom-space">
+          <legend>Skills Info</legend>
+          <div class="form-group">
+            <label for="skillName" class="col-sm-4 control-label">Skill Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="skillName" placeholder="CSS" ng-model="skills.skillname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="skillLevel" class="col-sm-4 control-label">Level:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="skillLevel" ng-model="skills.level">
+                <option value="beginner">Begginer</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default pull-right">Add Skill</button>
+        </fieldset>
+        <fieldset>
+          <legend>InCompany Info</legend>
+          <div class="form-group">
+            <label for="projectName" class="col-sm-4 control-label">Project Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="projectName" placeholder="Project Name" ng-model="projects.projectName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="projectRole" class="col-sm-4 control-label">Role:</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="projectRole" ng-model="projects.role">
+                <option value="developer">Developer</option>
+                <option value="tester">Tester</option>
+                <option value="teamlead">Team Lead</option>
+                <option value="sm">Solution Manager</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="projectStart" class="col-sm-4 control-label">Start Date:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" id="projectStart" ng-model="projects.startDate">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="currentProject" class="col-sm-4 control-label">Known End Date?</label>
+            <div class="col-sm-1">
+              <input type="checkbox" id="currentProject" ng-model="currentProject">
+            </div>
+            <div ng-show="currentProject">
+              <label for="currentProject" class="col-sm-3 control-label">End Date:</label>
+              <div class="col-sm-4">
+                <input type="date" class="form-control" id="projectEnd" ng-model="projects.endDate">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="projectComments" class="col-sm-4 control-label">Comments:</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" rows="3" name="engComments" id="engComments" ng-model="projects.overallStatus"></textarea>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default pull-right">Add Project</button>
+        </fieldset>
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center top-space bottom-space">
+        <button type="submit" class="btn btn-lg btn-primary">Update Employee</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+</div>
+
+<!-- Modal -->
+<employee-details></employee-details>

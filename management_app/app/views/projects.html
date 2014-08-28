@@ -1,0 +1,96 @@
+
+<!-- <div class="jumbotron">
+  <h1>Employees Managment Tool</h1>
+</div>
+-->
+<div class="row">
+  <div class="col-md-12">
+   <h2>Projects List</h2>
+   <a class="btn btn-info pull-right" ng-href="/#/edit_project">New Project</a>
+
+   <div class="row">
+     <div class="col-lg-12" data-role="filters">
+      <h3>Filters</h3>
+      <form role="form">
+        <div class="row filters-form">
+
+          <div class="col-md-4">
+            <label for="filterBy" class="control-label">Filter by:</label>
+            <input type="search" class="form-control" id="filterBy" placeholder="Client Name, Client Location..." ng-model="filterInput">
+          </div>
+
+          <div class="col-md-3">
+            <label for="areaFilter" class="control-label">Sales Partner:</label>
+            <select class="form-control" id="areaFilter" ng-model="filterSalesPartner">
+              <option value="all">All</option>
+              <option value="dev">Peter</option>
+              <option value="qa">Tim</option>
+              <option value="hhrr">John</option>
+              <option value="mgt">Steven</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="availabilityFilter" class="control-label">Solution Manager:</label>
+            <select class="form-control" id="availabilityFilter" ng-model="filterSM">
+              <option value="all">All</option>
+              <option value="full">Juan</option>
+              <option value="part">María</option>
+              <option value="none">José</option>
+            </select>
+          </div>
+
+          <div class="col-md-2">
+           <label for="locationFilter" class="control-label">Status:</label>
+           <select class="form-control" id="locationFilter" ng-model="filterStatus">
+            <option value="all">All</option>
+            <option value="allarg">Green</option>
+            <option value="ros">Yellow</option>
+            <option value="ba">Red</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12" data-role="list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Client Location</th>
+          <th>Sales Partner</th>
+          <th>Solution Manager</th>
+          <th>Team Size</th>
+          <th>VP locations</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="project in projectsList | filter:filterInput | filter:filterSalesPartner | filter:filterSM | filter:filterStatus ">
+          <td><a href="" ng-click="selectProject(project)" data-toggle="modal" data-target="#projectQuickInfo">{{project.clientName}}</a></td>
+          <td>{{project.clientLocation}}</td>
+          <td>{{project.salesPartner}}</td>
+          <td>{{project.solutionsManager}}</td>
+          <td>{{ displayTeamSize(project.teamMembers) }}</td>
+          <td>{{ displayTeamLocation(project.teamMembers) }}</td>
+          <td><span class="label label-success">{{project.projectStatus}}</span></td>
+          <td><a href="" ng-click="editProject(project)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a href="" ng-click="removeProject(project)"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<div ng-include="'views/projects/project.html'"></div>

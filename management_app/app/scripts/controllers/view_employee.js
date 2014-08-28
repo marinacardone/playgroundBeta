@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('managementApp')
-  .controller('ViewEmployee', function ($scope) {
-  });
+	.controller('ViewEmployee', function (){
+}
+);
