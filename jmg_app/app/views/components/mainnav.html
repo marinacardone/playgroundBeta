@@ -1,0 +1,52 @@
+<nav class="grey darken-3" role="navigation">
+  <div class="nav-wrapper">
+    <ul class="side-nav fixed" ng-class='{showNav : isCollapsed}'>
+      <li ng-class="{active:isCurrentPage('/home')}">
+        <a ng-href="/#/home" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-navigation-apps left"></i> Inicio
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/search')}">
+        <a ng-href="/#/search" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-action-search left"></i> Buscar
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/profile')}">
+        <a ng-href="/#/profile" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-social-person left"></i> Mi Perfil
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/notifications')}">
+        <a ng-href="/#/notifications" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-social-notifications left"></i> Notificaciones
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/social')}">
+        <a ng-href="/#/social" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-social-people left"></i> Social
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/interests')}">
+        <a ng-href="/#/interests" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-action-label left"></i> Intereses
+        </a>
+      </li> 
+      <li ng-class="{active:isCurrentPage('/likes')}">
+        <a ng-href="/#/likes" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-action-done left"></i> Likes
+        </a>
+      </li>
+      <li ng-class="{active:isCurrentPage('/configuration')}">
+        <a ng-href="/#/configuration" ng-click="collapseMenu()" class="grey-text">
+          <i class="mdi-action-settings left"></i> Configuración
+        </a>
+      </li>
+      <li>
+        <a ng-click="logOut()" class="grey-text">
+          <i class="mdi-action-exit-to-app left"></i> Salir
+        </a>
+      </li>
+    </ul>
+    <button class="btn-flat white-text navToggle" ng-click="toggleMenu()"><i class="mdi-navigation-menu"></i></button>
+  </div>
+</nav>

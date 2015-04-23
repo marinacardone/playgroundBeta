@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col s12 l3 nav-space no-padding">
+		<navbar></navbar>
+		&nbsp;
+	</div>
+
+	<div class="col s12 l9 menu-opts">
+		<div class="container">
+			<h2>Mi Perfil</h2>
+			<form class="col s12" name="profileForm" no-validate ng-submit="updateUser(userFirstName, userPassword)">
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="first_name" type="text" ng-model="userFirstName">
+						<label for="first_name">Nombre <small>(opcional)</small></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="email" class="validate" ng-model="userEmail" disabled>
+						<label for="email" class="active">E-mail</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="userPassword" name="userPassword" ng-model="userPassword" type="password" class="validate">
+				        <label for="userPassword">Nuevo Password</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="confirmPassword" name="confirmPassword" ng-model="confirmPassword" type="password" class="validate" compare-values="userPassword">
+				        <label for="confirmPassword">Confirmar Nuevo Password</label>
+				        <span ng-show="profileForm.confirmPassword.$dirty && profileForm.confirmPassword.$invalid" class="red-text accent-4">
+				        	<small ng-show="profileForm.confirmPassword.$error.compareValues">Por favor, verifique que los passwords sean iguales.</small>
+				        	<small ng-show="profileForm.confirmPassword.$error.required">Debe confirmar el password.</small>
+				        </span>
+					</div>
+				</div>
+
+				<div class="row center">
+					<button class="btn fixed-width btn-large" type="submit" ng-disabled="profileForm.$invalid">Guardar</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>

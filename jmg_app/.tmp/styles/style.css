@@ -1,0 +1,363 @@
+.button-collapse{
+    margin-left: 2rem;
+}
+.inline-list{
+    list-style: none;
+}
+.inline-list li{
+    display: inline-block;
+}
+
+nav{
+    position: fixed;
+    z-index: 600;
+    height: 52px;
+    line-height: 52px;
+}
+.nav-wrapper  .btn-flat{
+    margin-top: 10px;
+}
+.navToggle i{
+    font-size: 2.2em;
+}
+
+.navToggle:focus{
+    background-color: transparent;
+}
+
+.overlay{
+    position: absolute;
+    left:-20px;
+    background-color: rgba(0, 0, 0, 0);
+
+}
+.overlay.activeOverlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 300;
+}
+
+#sidenav-overlay{
+    z-index: 400;
+}
+
+hr{
+    border:none;
+    border-bottom: 1px solid #dedede;
+}
+
+.s12.no-padding{
+    width: 100%;
+    padding: 0;
+}
+
+.top-padding{
+    padding-top: 3rem;
+}
+
+.first-page{
+    padding-top: 15%;
+}
+.interest-tag{
+    margin: 0.5rem;
+    font-size: 0.857em;
+    background-color: #bdbdbd;
+    padding: 0 1.5rem;
+}
+.interest-controllers{
+    margin-top: 2rem;
+}
+
+.interest-list li{
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.section{
+    padding-top: 0.8rem;
+}
+
+.home .preloader{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background:#fff;
+    text-align: center;
+}
+.home .preloader p{
+    margin-top: -40px;
+}
+
+.content img{
+	margin-bottom: 4em;
+	margin-top: 1em;
+}
+.content .fixed-width{
+	width: 80%;
+	max-width: 260px;
+}
+
+.serviceerrormsg{
+    transition:all linear 0.5s;
+}
+
+.serviceerrormsg.ng-hide{
+    opacity: 0;
+}
+
+.articleheaderimage-container{
+    width: 100%;
+    height: 15rem;
+    overflow: hidden;
+    background: url(../images/wisable-logo-greyscale.svg) no-repeat center #f2f2f2;
+}
+.article-noimagespacer{
+    height: 3rem;
+}
+
+.content .articleheader-img{
+    width: 100%;
+    min-height: 15em;
+    display: block;
+    margin: 0;
+    color: #f2f2f2;
+}
+article{
+    position: relative;
+}
+.article-list, .menu-opts{
+    margin-top: 1.2rem;
+}
+.article-wrapper .card{
+    width: 90%;
+    margin: -1.5em auto 3em;
+}
+.article-wrapper .card.noimage{
+    margin-top: 2em;
+}
+.article-wrapper h1{
+    font-size: 2em;
+    line-height: 1.2em;
+    margin: 0.5em 0;
+}
+
+.article-wrapper .btn-flat{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.article-tag{
+    font-size: 0.9em;
+    background:#ededed;
+    display: inline-block;
+    padding: 0 .3em;
+    border-radius: .25em;
+    margin-right: 0.3em;
+    margin-bottom: 1em;
+}
+.full-article{
+    padding-bottom: 40px;
+}
+.full-article .articleheaderimage-container{
+    margin-bottom: 2rem;
+}
+.card .card-content h1 a, .card .card-content p a{
+    text-transform: none;
+}
+
+.home .card .card-content p{
+    height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .card-action{
+    padding: 0;
+    margin-top: 1em;
+}
+
+.card-action .btn-flat{
+    padding: 0 1.2rem 0 0;
+}
+
+.card-action .btn-flat i{
+    font-size: 1.8rem;
+}
+
+.card-action .btn-flat:focus{
+    background-color: transparent;
+}
+
+.card-action .btn-flat:focus i, .card-action .btn-flat:active i{
+    color: #333;
+}
+
+.full-article .card-action{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 1.5em; /* FF3.6+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 25%,rgba(255,255,255,1) 35%,rgba(255,255,255,1) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+.full-article .card-action a{
+    margin: 0.5em 0.5em;
+}
+.full-article .card-action a:last-child{
+    margin-right: 1em;
+}
+
+.shareoptions.card{
+    position: absolute;
+    width: 50%;
+    height: 150px;
+    bottom: 60px;
+    right: 30px;
+    padding: 10px;
+    background: #fff;
+    margin: 0;
+}
+
+.full-article .back-btn{
+    position: relative;
+    float: left;
+    margin-top: -0.15rem;
+    margin-left: -2.5rem;
+    border: 1px solid #ddd;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 200%;
+    color: #ddd;
+}
+
+.fullarticlesource{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.fb-btn{
+    margin-top: 1.5rem;
+    background: url(../images/icons/facebook.png) 14px 13px no-repeat;
+    background-size: 10%;
+    /*blue darken-4*/
+}
+.ggl-btn{
+    background: url(../images/icons/google.png) 17px 13px no-repeat;
+    background-size: 8%;
+    /*red darken-4*/
+}
+
+
+@media only screen and (min-width: 600px){
+    nav{
+        height: 60px;
+    }
+    .nav-wrapper .btn-flat{
+        height: 60px;
+        margin-top: 0;
+    }
+    .articleheaderimage-container{
+        height: 25rem;
+    }
+    .article-list, .menu-opts{
+        margin-top: 3.1rem;
+    }
+    .article-wrapper .card{
+        margin: -2.5em auto 3em;
+    }
+    .home .card .card-content p{
+        height: auto;
+        overflow: visible;
+    }
+}
+
+@media only screen and (min-width : 993px) {
+
+    .home .preloader{
+        left: 25%;
+    }
+
+    .ggl-btn{
+        margin-top: 1.5rem;
+    }
+    .article-list{
+        margin-top: 0;
+    }
+
+    nav, nav a.button-collapse, nav a.button-collapse i {
+        height: 0;
+    }
+    .nav-space{
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    ul.side-nav.fixed{
+        width: 25%;
+    }
+
+    ul.side-nav.fixed li{
+        width:100%;
+    }
+}
+
+input:-webkit-autofill{
+    background-color:#fff !important;
+}
+
+@media only screen and (max-width : 992px) {
+    ul.side-nav.fixed {
+        left: -250px;
+        transition:all linear 0.3s;
+    }
+
+    ul.side-nav.fixed.showNav{
+        left: 0px;
+    }
+
+    .search-page{
+        margin-top: 4rem;
+    }
+
+ }
+/* FORMS */
+input {
+    font-size: 16px;
+}
+.input-field .sufix {
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    transition: color 0.2s;
+    right: 0; }
+    .input-field .sufix.active {
+      color: #03a9f4; }
+  .input-field .sufix ~ input, .input-field .sufix ~ textarea {
+    margin-right: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem); }
+  .input-field .sufix ~ textarea {
+    padding-top: 0.8rem; }
+  .input-field .sufix ~ label {
+    margin-right: 3rem; }
+  @media only screen and (max-width : 992px) {
+    .input-field .sufix ~ input {
+      width: 86%;
+      width: calc(100% - 3rem); }
+ }
+  @media only screen and (max-width : 600px) {
+    .input-field .sufix ~ input {
+      width: 80%;
+      width: calc(100% - 3rem); }
+ }
+    
