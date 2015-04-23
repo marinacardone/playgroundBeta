@@ -7,11 +7,13 @@
 
 <div class="row search-page">
 	<div class="col s12">
+		<form ng-submit="doSearch(searchquery)">
 		<div class="input-field col s12">
           <i class="mdi-action-search sufix"></i>
-          <input id="search" type="text">
+          <input id="search" type="text" ng-model="searchquery">
           <label for="search">Buscar</label>
         </div>
+        </form>
 	</div>
 </div>
 
@@ -26,7 +28,7 @@
 								{{interest.keyword}}
 							</div>
 							<div class="col s5">
-								<a class="btn interest-tag"  toggle-class="light-blue" ng-click="modifyInterest(interest.keyword)">Seguir</a>
+								<button class="btn interest-tag waves-effect waves-light" toggle-class="light-blue" ng-click="modifyInterest(interest.keyword)">Seguir</button>
 							</div>
 						</li>
 					</ul>
