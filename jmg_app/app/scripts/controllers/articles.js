@@ -9,9 +9,9 @@
  */
 
 angular.module('wisableApp')
-    .controller('ArticleController', ['$scope', '$http', '$location' , 'Session', 'articlesServerProvider' , function ($scope, $http, $location, Session, articlesServerProvider) {
+    .controller('ArticleController', ['$scope', '$http', '$location' , 'Session', 'articlesServerURL' , function ($scope, $http, $location, Session, articlesServerURL) {
 
-    $scope.userId = localStorage.wisableUserId;
+    $scope.userId = Session.userId;
 
     $scope.sharearticle = false;
 
@@ -20,23 +20,17 @@ angular.module('wisableApp')
         $location.path('/');
     } else {
 
-        $scope.articles;
-
-        // articles list
-        
-        if($scope.articles === undefined){
-            $http.get(articlesServerProvider+'home/'+$scope.userId+'/')
-            .then(function(response) {
-                $scope.articles = response.data;
-            }, function(errResponse) {
-                console.error('Error while fetching articles' + errResponse);
-            });
-        }
-        
+        $http.get(articlesServerURL+'home/'+$scope.userId+'/')
+        .then(function(response) {
+            $scope.articles = response.data;
+        }, function(errResponse) {
+            console.error('Error while fetching articles' + errResponse);
+        });
+    
        
         $scope.likeArticle = function(articleId){
 
-            $http.get(articlesServerProvider +'tastes/like/'+$scope.userId+'/'+articleId+'/')
+            $http.get(articlesServerURL +'tastes/like/'+$scope.userId+'/'+articleId+'/')
                 .then(function(response) {
 
                     Materialize.toast('Me gusta este artículo', 2000);
@@ -56,7 +50,7 @@ angular.module('wisableApp')
 
         $scope.unlikeArticle = function(articleId){
 
-            $http.get(articlesServerProvider+'tastes/dislike/'+$scope.userId+'/'+articleId+'/')
+            $http.get(articlesServerURL+'tastes/dislike/'+$scope.userId+'/'+articleId+'/')
                 .then(function(response) {
 
                     Materialize.toast('NO me gusta este artículo', 2000);

@@ -9,12 +9,12 @@
  */
 
 angular.module('wisableApp')
-    .controller('FullArticleController', ['$scope', '$http', '$location', 'Session', 'articlesServerProvider' , function ($scope, $http, $location, Session, articlesServerProvider) {
+    .controller('FullArticleController', ['$scope', '$http', '$location', 'Session', 'articlesServerURL' , function ($scope, $http, $location, Session, articlesServerURL) {
         
         $scope.articleId = $location.path().slice(9);
         $scope.userId = localStorage.wisableUserId;
 
-    $http.get(articlesServerProvider+'details/'+$scope.userId+'/'+$scope.articleId+'/')
+    $http.get(articlesServerURL+'details/'+$scope.userId+'/'+$scope.articleId+'/')
          .then(function(response) {
             $scope.fullArticle = response.data;
          }, function(errResponse) {
@@ -28,7 +28,7 @@ angular.module('wisableApp')
 
     $scope.likeArticle = function(){
 
-        $http.get(articlesServerProvider+'tastes/like/'+$scope.userId+'/'+$scope.articleId+'/')
+        $http.get(articlesServerURL+'tastes/like/'+$scope.userId+'/'+$scope.articleId+'/')
             .then(function(response) {
 
                 Materialize.toast('Me gusta este artículo', 2000);
@@ -48,7 +48,7 @@ angular.module('wisableApp')
 
     $scope.unlikeArticle = function(){
 
-        $http.get(articlesServerProvider+'tastes/dislike/'+$scope.userId+'/'+$scope.articleId+'/')
+        $http.get(articlesServerURL+'tastes/dislike/'+$scope.userId+'/'+$scope.articleId+'/')
             .then(function(response) {
 
                 Materialize.toast('NO me gusta este artículo', 2000);

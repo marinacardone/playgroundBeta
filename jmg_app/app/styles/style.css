@@ -1,10 +1,9 @@
 .button-collapse{
     margin-left: 2rem;
 }
-.inline-list{
-    list-style: none;
-}
+
 .inline-list li{
+    list-style: none;
     display: inline-block;
 }
 
@@ -14,7 +13,7 @@ nav{
     height: 52px;
     line-height: 52px;
 }
-.nav-wrapper  .btn-flat{
+.nav-wrapper .btn-flat{
     margin-top: 10px;
 }
 .navToggle i{
@@ -262,6 +261,10 @@ article{
     /*red darken-4*/
 }
 
+.search-results li{
+    border-bottom: 1px solid #ddd;
+}
+
 
 @media only screen and (min-width: 600px){
     nav{
@@ -279,6 +282,14 @@ article{
     }
     .article-wrapper .card{
         margin: -2.5em auto 3em;
+    }
+    .article-wrapper .shareoptions.card{
+        max-width: 200px;
+        bottom: 20px; 
+        right: 60px;
+    }
+    .article-wrapper.full-article .shareoptions.card{
+        position: fixed;
     }
     .home .card .card-content p{
         height: auto;
@@ -340,7 +351,7 @@ input:-webkit-autofill{
 input {
     font-size: 16px;
 }
-.input-field .sufix {
+.search-page .search-btn{
     position: absolute;
     width: 3rem;
     font-size: 2rem;
@@ -349,25 +360,15 @@ input {
     -o-transition: color 0.2s;
     -ms-transition: color 0.2s;
     transition: color 0.2s;
-    right: 0; }
-    .input-field .sufix.active {
-      color: #03a9f4; }
-  .input-field .sufix ~ input, .input-field .sufix ~ textarea {
-    margin-right: 3rem;
-    width: 92%;
-    width: calc(100% - 3rem); }
-  .input-field .sufix ~ textarea {
-    padding-top: 0.8rem; }
-  .input-field .sufix ~ label {
-    margin-right: 3rem; }
-  @media only screen and (max-width : 992px) {
-    .input-field .sufix ~ input {
-      width: 86%;
-      width: calc(100% - 3rem); }
- }
-  @media only screen and (max-width : 600px) {
-    .input-field .sufix ~ input {
-      width: 80%;
-      width: calc(100% - 3rem); }
- }
+    right: 0;
+    border: none;
+    background: none;
+}
+.search-page input{
+    width: calc(100% - 3rem);
+}
+
+ [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
     

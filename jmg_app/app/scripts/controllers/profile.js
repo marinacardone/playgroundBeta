@@ -8,13 +8,13 @@
  * Controller of the wisableApp
  */
 angular.module('wisableApp')
-  .controller('ProfileController', ['$scope', '$http', '$location' , 'Session' , 'usersServerProvider', function ($scope, $http, $location, Session, usersServerProvider) {
+  .controller('ProfileController', ['$scope', '$http', '$location' , 'Session' , 'usersServerURL', function ($scope, $http, $location, Session, usersServerURL) {
     $scope.userEmail = localStorage.wisableUserId;
     $scope.userPassword = '';
 
     $scope.updateUser = function(userFirstName, userPassword){
         console.log('registering user > '+ $scope.userEmail + ' pass > '+userPassword);
-          $http.get(usersServerProvider +'users/register/' + $scope.userEmail + '/'+ userPassword +'/')
+          $http.get(usersServerURL +'users/register/' + $scope.userEmail + '/'+ userPassword +'/')
           .then(function(response) {
             // validate credentials AND go to homepage
             if(response.data.success === true){
@@ -30,34 +30,7 @@ angular.module('wisableApp')
 
         $scope.userId = localStorage.wisableUserId;
     };
-
-    $scope.userInterests = [
-        {name: 'Arte',
-        id:1,
-        isSelected:false}, 
-        {name: 'Autos',
-        id:2,
-        isSelected:false}, 
-        {name: 'Música',
-        id:3,
-        isSelected:true},
-        {name: 'Tecnología',
-        id:4,
-        isSelected:false}, 
-        {name: 'Cocina',
-        id:5,
-        isSelected:true},
-        {name: 'Películas',
-        id:6,
-        isSelected:true},
-        {name: 'Series de TV',
-        id:7,
-        isSelected:false},
-        {name: 'Famosos',
-        id:8,
-        isSelected:false}
-    ];
-
+    
     $scope.editInterest = function(interest){
         var index = $scope.selectedInterests.indexOf(interest);
         if (index > -1) {

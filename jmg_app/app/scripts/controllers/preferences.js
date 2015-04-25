@@ -8,11 +8,9 @@
  * Controller of the wisableApp
  */
 angular.module('wisableApp')
-  .controller('PreferencesController', ['$scope', '$http', '$location', 'Session', 'Interests' , function ($scope, $http, $location, Session, Interests) {
+  .controller('PreferencesController', ['$scope', '$http', '$location', 'Session', 'Interests', 'baseServerURL' , function ($scope, $http, $location, Session, Interests, baseServerURL) {
 
     var userId = Session.userId;
-
-    var baseURL = 'http://python-recommender.herokuapp.com/';
 
     //Redirect if no user loged in
     if(!userId){
@@ -58,7 +56,7 @@ angular.module('wisableApp')
           // remove
   		    $scope.selectedInterests.splice(index, 1);
 
-          $http.get(baseURL +'tags/interests/remove/'+userId+'/'+interest+'/')
+          $http.get(baseServerURL +'tags/interests/remove/'+userId+'/'+interest+'/')
             .then(function(response) {
               console.log('removed: ' + response.data);
             }, function(errResponse) {
@@ -69,7 +67,7 @@ angular.module('wisableApp')
           // add
     			$scope.selectedInterests.push(interest);
 
-          $http.get(baseURL +'tags/interests/add/'+userId+'/'+interest+'/')
+          $http.get(baseServerURL +'tags/interests/add/'+userId+'/'+interest+'/')
             .then(function(response) {
               console.log('added: ' + response.data);
             }, function(errResponse) {
@@ -77,7 +75,7 @@ angular.module('wisableApp')
           });
 
     		}
-      		//return $scope.selectedInterests;
+        
       	};
 
       }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wisableApp')
-	.service('Session', function () {
+  .service('Session', function () {
 	  this.create = function (userId) {
 	    this.userId = userId;
 	    localStorage.wisableUserId = userId;
@@ -12,7 +12,7 @@ angular.module('wisableApp')
 	  };
 	  this.userId = localStorage.wisableUserId;
 	  return this;
-})
+  })
 	.service('Interests', function(){
 		return [
         {keyword: 'política'},
@@ -30,4 +30,4 @@ angular.module('wisableApp')
         {keyword: 'maternidad'},
         {keyword: 'cine'}
       ]
-	});
+  });

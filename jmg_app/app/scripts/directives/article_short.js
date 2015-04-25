@@ -5,7 +5,6 @@ angular.module('wisableApp')
 	return {
 		restrict : 'E',
 		templateUrl : 'views/articles/article_short.html',
-		controller: 'ArticleController',
 		replace: true
 	};
 });

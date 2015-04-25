@@ -9,21 +9,17 @@
  */
 
 angular.module('wisableApp')
-  .controller('LoginController', ['$scope', '$http', '$location' , 'Session' , 'usersServerProvider' , function ($scope, $http, $location, Session, usersServerProvider) {
+  .controller('LoginController', ['$scope', '$http', '$location' , 'Session' , 'usersServerURL' , function ($scope, $http, $location, Session, usersServerURL) {
 
     $scope.invalidCredentials = false;
 
     $scope.userLogin = function(userEmail, userPassword){
-
-      //console.log('user > '+ userEmail + ' pass > '+userPassword);
       
-      $http.get(usersServerProvider +'login/' + userEmail + '/'+ userPassword +'/')
+      $http.get(usersServerURL +'login/' + userEmail + '/'+ userPassword +'/')
       .then(function(response) {
         // validate credentials AND go to homepage
         if(response.data.success === true){
           Session.create(userEmail);
-          //localStorage.setItem('wisableUserId', userEmail);
-          //console.log('user id '+localStorage.wisableUserId);
 
           // START TRACKING
           mixpanel.track("login", {"user": userEmail});
@@ -38,8 +34,10 @@ angular.module('wisableApp')
           console.log('invalid credentials');
         }
         console.log('service response > '+ JSON.stringify(response.data.success));
+
       }, function(errResponse) {
-        console.error('Error while fetching liked article' + errResponse);
+
+        console.error('Error while trying to login' + errResponse);
       });
        
     };

@@ -5,44 +5,48 @@
 	</div>
 </div>
 
-<div class="row search-page">
-	<div class="col s12">
-		<form ng-submit="doSearch(searchquery)">
-		<div class="input-field col s12">
-          <i class="mdi-action-search sufix"></i>
-          <input id="search" type="text" ng-model="searchquery">
-          <label for="search">Buscar</label>
-        </div>
-        </form>
+<div class="container search-page">
+	<div class="row">
+		<div class="col s12 l9 right">
+			<form ng-submit="doSearch(searchquery)">
+			<div class="input-field col s12">
+		      <input id="search" type="text" ng-model="searchquery">
+		      <label for="search">Buscar...</label>
+		      <button type="submit" class="search-btn sufix"><i class="mdi-action-search"></i></button>
+		    </div>
+		    </form>
+		</div>
 	</div>
-</div>
+
+	<div class="row search-results" ng-show="activesearch">
+		<div class="col s12 l9 right">
+			<p>Se encontraron <strong>{{searchresults.length || 0}}</strong> resultados para <strong>{{searchquery}}</strong></p>
+			<ul class="search-results">
+				<li ng-repeat="result in searchresults">
+					<a ng-href="/#/article/{{result.id}}"><h5>{{result.title}}</h5></a>
+					<p>{{result.subtitle | truncateon: 140}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
 
 	<div class="row">
-		<div class="col s12 l9">
+		<div class="col s12 l9 right">
 			<div ng-controller="PreferencesController">
-
-					<!-- loop interests -->
-					<ul class="interest-list">
-						<li ng-repeat="interest in interests" class="valign-wrapper">
-							<div class="col s7 valign">
-								{{interest.keyword}}
-							</div>
-							<div class="col s5">
-								<button class="btn interest-tag waves-effect waves-light" toggle-class="light-blue" ng-click="modifyInterest(interest.keyword)">Seguir</button>
-							</div>
-						</li>
-					</ul>
-					 
-					<!-- /loop interests -->
-
-					<!-- <hr class="interest-controllers"/>
-
-					<div class="row center interest-controllers">
-						<div class="col s12">
-							<button type="button" class="btn fixed-width btn-large">Guardar</button>
+				<h3>Te puede interesar:</h3>
+				<!-- loop interests -->
+				<ul class="interest-list">
+					<li ng-repeat="interest in interests" class="valign-wrapper">
+						<div class="col s7 l9 valign">
+							{{interest.keyword}}
 						</div>
-					</div> -->
-
+						<div class="col s5 l3">
+							<button class="btn interest-tag waves-effect waves-light" ng-class="{'light-blue' : !interest.isSelected}" ng-click="modifyInterest(interest.keyword)">{{interestBtnAction(interest)}}</button>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
+
+</div>	
