@@ -5,20 +5,13 @@
 	</div>
 
 	<div class="col s12 l9 menu-opts">
-		<div class="center">
+		<div class="container center">
 			<h2>Intereses</h2>
+			<p>Elige los temas que te interesan para recibir las últimas noticias y artículos especialmente seleccionados para ti.</p>
 
 				<!-- loop interests -->
-				 <a class="btn interest-tag" ng-repeat="interest in interests" toggle-class="light-blue" ng-click="modifyInterest(interest.keyword)">{{interest.keyword}}</a>
+				 <a class="btn interest-tag" ng-repeat="interest in interests" ng-class="{'light-blue': interest.isSelected}" ng-click="modifyInterest(interest.keyword)">{{interest.keyword}} <i class="mdi-navigation-check right" ng-show="interest.isSelected"></i></a>
 				<!-- /loop interests -->
-
-				<!-- <hr class="interest-controllers"/>
-
-				<div class="row center interest-controllers">
-					<div class="col s12">
-						<button type="button" class="btn fixed-width btn-large">Guardar</button>
-					</div>
-				</div> -->
 
 		</div>
 	</div>

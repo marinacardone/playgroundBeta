@@ -7,38 +7,37 @@
  * # PreferencesController
  * Controller of the wisableApp
  */
-angular.module('wisableApp')
-  .controller('PreferencesController', ['$scope', '$http', '$location', 'Session', 'Interests', 'baseServerURL' , function ($scope, $http, $location, Session, Interests, baseServerURL) {
+ angular.module('wisableApp')
+ .controller('PreferencesController', [
+  '$scope', 
+  '$http', 
+  '$location', 
+  'Session', 
+  'Interests', 
+  'baseServerURL',
+  'webServices' , 
+  function ($scope, $http, $location, Session, Interests, baseServerURL, webServices) {
 
     var userId = Session.userId;
+    var selectedInterests;
 
     //Redirect if no user loged in
     if(!userId){
-        $location.path('/');
+      $location.path('/');
     } else {
 
-    	//var baseURL = 'http://python-recommender.herokuapp.com/';
-
-      /*$http.get(baseURL +'tags/interests/random/25/')
-        .then(function(response) {
-      		$scope.interests = response.data;
-        }, function(errResponse) {
-          console.error('Error while fetching tags. ' + errResponse);
-      });*/
-
-      //Hardcoded interests
       $scope.interests = Interests;
 
-      $scope.addPreferences = function(){
+      $scope.finishRegistration = function(){
         // START TRACKING
         var d = new Date();
         var n = d.toLocaleString();
         mixpanel.identify("13487");
         mixpanel.people.set({
-            "$first_name": "Joe",
-            "$last_name": "Doe",
-            "$created": n,
-            "$email": Session.userId
+          "$first_name": "Joe",
+          "$last_name": "Doe",
+          "$created": n,
+          "$email": Session.userId
         });
         mixpanel.track("registro-completo");
         ga('send', 'event', 'sesion', 'signup', userId);
@@ -48,36 +47,68 @@ angular.module('wisableApp')
         $location.path('/home'); 
       };
 
-    	$scope.selectedInterests = [];
+      // interests
 
-    	$scope.modifyInterest = function(interest){
-    		var index = $scope.selectedInterests.indexOf(interest);
-    		if (index > -1) {
+      webServices.getUserInterests(userId)
+      .then(function(response){
+        selectedInterests = response.data.tags;
+        updateInterests();
+      }, function(errResponse){
+        console.error('Error while fetching interests. ' + errResponse);
+      });
+
+      $scope.modifyInterest = function(interest){
+        console.log(interest);
+        var index = selectedInterests.indexOf(interest.keyword);
+        if (index > -1) {
           // remove
-  		    $scope.selectedInterests.splice(index, 1);
+          selectedInterests.splice(index, 1);
 
-          $http.get(baseServerURL +'tags/interests/remove/'+userId+'/'+interest+'/')
-            .then(function(response) {
-              console.log('removed: ' + response.data);
-            }, function(errResponse) {
-              console.error('Error while removing tag. ' + errResponse);
+          webServices.removeUserInterest(userId, interest.keyword)
+          .then(function(response) {
+            interest.isSelected = false;
+            console.log('removed: ' + response.data);
+          }, function(errResponse) {
+            console.error('Error while removing tag. ' + errResponse);
           });
 
-    		} else {
+        } else {
           // add
-    			$scope.selectedInterests.push(interest);
+          selectedInterests.push(interest);
 
-          $http.get(baseServerURL +'tags/interests/add/'+userId+'/'+interest+'/')
-            .then(function(response) {
-              console.log('added: ' + response.data);
-            }, function(errResponse) {
-              console.error('Error while adding tag. ' + errResponse);
+          webServices.addUserInterest(userId, interest.keyword)
+          .then(function(response) {
+            interest.isSelected = true;
+            console.log('added: ' + response.data);
+          }, function(errResponse) {
+            console.error('Error while adding tag. ' + errResponse);
           });
 
-    		}
+        }
         
-      	};
+      };
 
+      //---
+
+      var updateInterests = function(){
+        for(var i=0; i<Interests.length; i++){
+          Interests[i].isSelected = false;
+          for(var j=0; j<selectedInterests.length; j++){
+            if(Interests[i].keyword == selectedInterests[j]){
+              Interests[i].isSelected = true;
+            }
+          }
+        }
+      }      
+
+      $scope.interestBtnLabel = function(interest){
+        if (interest.isSelected) {
+          return "Siguiendo"
+        } else {
+          return "Seguir"
+        };
       }
+
+    }
 
   }]);

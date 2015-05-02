@@ -16,7 +16,8 @@ angular.module('wisableApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.materialize'
+    'ui.materialize',
+    'socialLinks'
   ])
   .config(function ($routeProvider) {
     $routeProvider

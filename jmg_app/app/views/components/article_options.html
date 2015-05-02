@@ -1,0 +1,8 @@
+<div class="card-action">
+    <div class="right">
+       <button ng-click="likeArticle(article.id)" class="grey-text btn-flat"><i class="mdi-action-thumb-up"></i></button>
+       <button class="grey-text btn-flat" ng-click="sharearticle = !sharearticle"><i class="mdi-social-share"></i></button>
+       <button ng-click="unlikeArticle(article.id)" class="grey-text btn-flat"><i class="mdi-action-thumb-down"></i></button>
+    </div>
+    <share-options ng-show="sharearticle"/>
+</div>

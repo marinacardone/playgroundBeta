@@ -9,7 +9,7 @@
  */
 
 angular.module('wisableApp')
-    .controller('ArticleController', ['$scope', '$http', '$location' , 'Session', 'articlesServerURL' , function ($scope, $http, $location, Session, articlesServerURL) {
+    .controller('ArticleController', ['$scope', '$http', '$location' , 'Session', 'articlesServerURL', 'webServices' , function ($scope, $http, $location, Session, articlesServerURL, webServices) {
 
     $scope.userId = Session.userId;
 
@@ -20,7 +20,7 @@ angular.module('wisableApp')
         $location.path('/');
     } else {
 
-        $http.get(articlesServerURL+'home/'+$scope.userId+'/')
+        webServices.getArticles($scope.userId)
         .then(function(response) {
             $scope.articles = response.data;
         }, function(errResponse) {
