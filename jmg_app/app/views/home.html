@@ -7,8 +7,8 @@
 	<div class="col s12 l9 no-padding home">
 
 		<preloader></preloader>
-		<div infinite-scroll="loadMoreArticles()" infinite-scroll-distance="3">
-			<ul class="article-list">
+		<div>
+			<ul class="article-list" infinite-scroll="loadMoreArticles()" infinite-scroll-disabled='appBusy' infinite-scroll-distance="1">
 				<li ng-repeat="article in articles">
 					<article-short></article-short>
 				</li>

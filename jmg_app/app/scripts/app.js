@@ -79,9 +79,12 @@ angular.module('wisableApp', [
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
   }])
-  .constant('articlesServerURL', 'http://python-recommender.herokuapp.com/articles/')
-  .constant('usersServerURL', 'http://python-recommender.herokuapp.com/users/')
-  .constant('baseServerURL', 'http://python-recommender.herokuapp.com/')
+  .constant('serverUrl', {
+      base: 'http://python-recommender.herokuapp.com/',
+      articles: 'http://python-recommender.herokuapp.com/articles/',
+      users: 'http://python-recommender.herokuapp.com/users/',
+      interests: 'http://python-recommender.herokuapp.com/tags/interests/',
+      tastes: 'http://python-recommender.herokuapp.com/articles/tastes/'})
   .constant("toastConfig", {
             duration: 3000,
             rounded: "rounded"

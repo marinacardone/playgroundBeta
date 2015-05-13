@@ -8,13 +8,20 @@
  * Controller of the wisableApp
  */
 angular.module('wisableApp')
-  .controller('ProfileController', ['$scope', '$http', '$location' , 'Session' , 'usersServerURL', function ($scope, $http, $location, Session, usersServerURL) {
-    $scope.userEmail = localStorage.wisableUserId;
+  .controller('ProfileController', [
+    '$scope', 
+    '$http', 
+    '$location', 
+    'Session', 
+    'serverUrl', 
+    function ($scope, $http, $location, Session, serverUrl) {
+    
+    $scope.userEmail = Session.userId;
     $scope.userPassword = '';
 
     $scope.updateUser = function(userFirstName, userPassword){
         console.log('registering user > '+ $scope.userEmail + ' pass > '+userPassword);
-          $http.get(usersServerURL +'users/register/' + $scope.userEmail + '/'+ userPassword +'/')
+          $http.get(serverUrl.users +'users/register/' + $scope.userEmail + '/'+ userPassword +'/')
           .then(function(response) {
             // validate credentials AND go to homepage
             if(response.data.success === true){
@@ -27,8 +34,6 @@ angular.module('wisableApp')
           }, function(errResponse) {
             console.error('Error updating user. ' + errResponse);
           });
-
-        $scope.userId = localStorage.wisableUserId;
     };
     
     $scope.editInterest = function(interest){
@@ -41,20 +46,5 @@ angular.module('wisableApp')
         return $scope.selectedInterests;
     };
 
-    $scope.userLikes = [
-    	{
-    		articleId : 2,
-    		articleTitle : 'Awesome title', 
-    		articleAuthor : 'Jack Something',
-    		articleCategory : 'Cine',
-    		articleDate : '21/03/2014'
-    	},
-    	{
-    		articleId : 3,
-    		articleTitle : 'Best title', 
-    		articleAuthor : 'Jane Smith',
-    		articleCategory : 'Tecnología',
-    		articleDate : '05/10/2013'
-    	}
-    ];
+    $scope.userLikes = [];
   }]);

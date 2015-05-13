@@ -14,9 +14,9 @@
   '$location', 
   'Session', 
   'Interests', 
-  'baseServerURL',
+  'serverUrl',
   'webServices' , 
-  function ($scope, $http, $location, Session, Interests, baseServerURL, webServices) {
+  function ($scope, $http, $location, Session, Interests, serverUrl, webServices) {
 
     var userId = Session.userId;
     var selectedInterests;
@@ -49,10 +49,12 @@
 
       // interests
 
-      webServices.getUserInterests(userId)
+      webServices.getUserInterests()
       .then(function(response){
-        selectedInterests = response.data.tags;
+
+        selectedInterests = response.tags;
         updateInterests();
+
       }, function(errResponse){
         console.error('Error while fetching interests. ' + errResponse);
       });
@@ -64,7 +66,7 @@
           // remove
           selectedInterests.splice(index, 1);
 
-          webServices.removeUserInterest(userId, interest.keyword)
+          webServices.removeUserInterest(interest.keyword)
           .then(function(response) {
             interest.isSelected = false;
             console.log('removed: ' + response.data);
@@ -76,7 +78,7 @@
           // add
           selectedInterests.push(interest.keyword);
 
-          webServices.addUserInterest(userId, interest.keyword)
+          webServices.addUserInterest(interest.keyword)
           .then(function(response) {
            interest.isSelected = true;
             console.log('added: ' + response.data);

@@ -11,15 +11,14 @@ angular.module('wisableApp')
   .controller('SearchController', [
       '$scope', 
       '$http', 
-      '$location' , 
       'Session' , 
-      'articlesServerURL', 
+      'serverUrl', 
       'Interests',
       'webServices', 
-    function ($scope, $http, $location, Session, articlesServerURL, Interests, webServices) {
+    function ($scope, $http, Session, serverUrl, Interests, webServices) {
     
     var userId = Session.userId;
-    var baseURL = articlesServerURL+'search/';
+    var baseURL = serverUrl.articles+'search/';
 
     $scope.doSearch = function(searchQuery){
       var searchURL = baseURL + userId + '/' + encodeURIComponent(searchQuery) + '/';
