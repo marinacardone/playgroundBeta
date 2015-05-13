@@ -25,7 +25,7 @@ angular.module('wisableApp')
 	        // validate credentials AND go to homepage
 	        if(response.data.success === true){
            // register newUser AND go to preferences
-            localStorage.setItem('wisableUserId', userEmail);
+            Session.create(userEmail);
             //console.log(localStorage.wisableUserId);
         		$location.path('/subjectpreferences');
 	        } else {

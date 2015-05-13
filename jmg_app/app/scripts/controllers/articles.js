@@ -11,16 +11,17 @@
 angular.module('wisableApp')
     .controller('ArticleController', ['$scope', '$http', '$location' , 'Session', 'articlesServerURL', 'webServices' , function ($scope, $http, $location, Session, articlesServerURL, webServices) {
 
-    $scope.userId = Session.userId;
+    var userId = Session.userId;
+    var pageNum = 1;
 
     $scope.sharearticle = false;
 
     //Redirect if no user loged in
-    if(!$scope.userId){
+    if(!userId){
         $location.path('/');
     } else {
 
-        webServices.getArticles($scope.userId)
+        webServices.getHomeArticles(userId, pageNum)
         .then(function(response) {
             $scope.articles = response.data;
         }, function(errResponse) {
@@ -30,7 +31,7 @@ angular.module('wisableApp')
        
         $scope.likeArticle = function(articleId){
 
-            $http.get(articlesServerURL +'tastes/like/'+$scope.userId+'/'+articleId+'/')
+            $http.get(articlesServerURL +'tastes/like/'+userId+'/'+articleId+'/')
                 .then(function(response) {
 
                     Materialize.toast('Me gusta este artículo', 2000);
@@ -50,7 +51,7 @@ angular.module('wisableApp')
 
         $scope.unlikeArticle = function(articleId){
 
-            $http.get(articlesServerURL+'tastes/dislike/'+$scope.userId+'/'+articleId+'/')
+            $http.get(articlesServerURL+'tastes/dislike/'+userId+'/'+articleId+'/')
                 .then(function(response) {
 
                     Materialize.toast('NO me gusta este artículo', 2000);
@@ -65,6 +66,16 @@ angular.module('wisableApp')
                     //console.log('service response > '+ JSON.stringify($scope.unlikeThisArticle));
                 }, function(errResponse) {
                     console.error('Error while fetching disliked article' + errResponse);
+                });
+        }
+
+        $scope.loadMoreArticles = function(){
+            pageNum++;
+            webServices.getHomeArticles(userId, pageNum)
+                .then(function(response) {
+                    $scope.articles.push(response.data);
+                }, function(errResponse) {
+                    console.error('Error while fetching articles' + errResponse);
                 });
         }
 

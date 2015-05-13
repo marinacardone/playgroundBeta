@@ -170,6 +170,12 @@ article{
     text-transform: none;
 }
 
+.home .card{
+    overflow: visible;
+}
+.home .card .card-content{
+    padding-bottom: 0;
+}
 .home .card .card-content p{
     height: 80px;
     overflow: hidden;
@@ -179,6 +185,7 @@ article{
 .card .card-action{
     padding: 0;
     margin-top: 1em;
+    overflow: hidden;
 }
 
 .card-action .btn-flat{
@@ -201,7 +208,7 @@ article{
     position: fixed;
     bottom: 0;
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     padding-top: 1.5em;
     background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 25%,rgba(255,255,255,1) 35%,rgba(255,255,255,1) 100%); /* FF3.6+ */
     background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 25%,rgba(255,255,255,1) 35%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
@@ -218,16 +225,6 @@ article{
     margin-right: 1em;
 }
 
-.shareoptions.card{
-    position: absolute;
-    width: 50%;
-    height: 150px;
-    bottom: 60px;
-    right: 30px;
-    padding: 10px;
-    background: #fff;
-    margin: 0;
-}
 
 .full-article .back-btn{
     position: relative;
@@ -261,10 +258,57 @@ article{
     /*red darken-4*/
 }
 
+.shareoptions.card{
+    position: absolute;
+    width: 50%;
+    height: 206px;
+    bottom: 60px;
+    right: 30px;
+    padding: 10px;
+    background: #fff;
+    margin: 0;
+}
+
+.shareoptions li{
+    margin-bottom: .2rem;
+}
+.shareoptions a{
+    display: block;
+    padding: 1rem 3rem;
+    color: #fff;
+    background-size: 15%;
+    width: 100%;
+}
+.shareoptions p, .shareoptions ul{
+    margin: 0;
+    padding: 0;
+}
+.home .card .card-content .shareoptions p{
+    height: 30px;
+}
+.share-fb{
+    background: url(../images/icons/social.gif) 8px 15px no-repeat #3a5795;
+}
+.share-tw{
+    background: url(../images/icons/social.gif) 8px -282px no-repeat  #55acee;
+}
+.share-gp{
+    background: url(../images/icons/social.gif) 8px -90px no-repeat  #d73d32;
+}
+
+.full-article .share-tw{
+    background-position: 8px -295px;
+}
+.full-article .share-gp{
+    background-position: 8px -93px;
+}
 .search-results li{
     border-bottom: 1px solid #ddd;
 }
 
+.full-article .card-action .shareoptions a{
+    margin: 0;
+}
 
 @media only screen and (min-width: 600px){
     nav{
@@ -283,17 +327,26 @@ article{
     .article-wrapper .card{
         margin: -2.5em auto 3em;
     }
+    .home .card .card-content p{
+        height: auto;
+        overflow: visible;
+    }
     .article-wrapper .shareoptions.card{
         max-width: 200px;
         bottom: 20px; 
-        right: 60px;
+        right: 10px;
     }
     .article-wrapper.full-article .shareoptions.card{
         position: fixed;
     }
-    .home .card .card-content p{
-        height: auto;
-        overflow: visible;
+    .shareoptions.card{
+        height: 212px;
+    }
+    .share-tw{
+        background-position: 8px -294px;
+    }
+    .share-gp{
+        background-position: 8px -92px;
     }
 }
 

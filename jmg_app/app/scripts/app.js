@@ -17,7 +17,8 @@ angular.module('wisableApp', [
     'ngSanitize',
     'ngTouch',
     'ui.materialize',
-    'socialLinks'
+    'socialLinks',
+    'infinite-scroll'
   ])
   .config(function ($routeProvider) {
     $routeProvider

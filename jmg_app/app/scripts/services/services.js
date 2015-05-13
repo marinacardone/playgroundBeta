@@ -58,6 +58,9 @@ angular.module('wisableApp')
       },
       removeUserInterest : function(userId, interest){
         return $http.get('http://python-recommender.herokuapp.com/tags/interests/remove/'+userId+'/'+interest+'/');
+      },
+      getHomeArticles: function(userId, pageNumber){
+        return $http.get('http://python-recommender.herokuapp.com/articles/homepaged/'+userId+'/'+pageNumber+'/');
       }
     }
   });

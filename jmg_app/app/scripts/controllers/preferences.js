@@ -58,7 +58,7 @@
       });
 
       $scope.modifyInterest = function(interest){
-        console.log(interest);
+        console.log(interest.keyword + ' at '+selectedInterests);
         var index = selectedInterests.indexOf(interest.keyword);
         if (index > -1) {
           // remove
@@ -74,11 +74,11 @@
 
         } else {
           // add
-          selectedInterests.push(interest);
+          selectedInterests.push(interest.keyword);
 
           webServices.addUserInterest(userId, interest.keyword)
           .then(function(response) {
-            interest.isSelected = true;
+           interest.isSelected = true;
             console.log('added: ' + response.data);
           }, function(errResponse) {
             console.error('Error while adding tag. ' + errResponse);

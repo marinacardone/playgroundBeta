@@ -7,11 +7,12 @@
 	<div class="col s12 l9 no-padding home">
 
 		<preloader></preloader>
-
-		<ul class="article-list">
-			<li ng-repeat="article in articles">
-				<article-short></article-short>
-			</li>
-		</ul>
+		<div infinite-scroll="loadMoreArticles()" infinite-scroll-distance="3">
+			<ul class="article-list">
+				<li ng-repeat="article in articles">
+					<article-short></article-short>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
