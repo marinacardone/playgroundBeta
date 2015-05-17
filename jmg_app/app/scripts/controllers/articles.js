@@ -51,18 +51,28 @@ angular.module('wisableApp')
             webServices.dislikeArticle(articleId);
         }
 
+        //console.log('controller',$scope.appBusy);
+
         $scope.loadMoreArticles = function(){
+
+            //console.log('loadMore',$scope.appBusy, 'pageNum',pageNum);
             //console.log('loadMore')
             if ($scope.appBusy) return;
             
             //console.log('calling page',pageNum);
             $scope.appBusy = true;
+
               webServices.getHomeArticles(pageNum)
                 .then(function(homeArticles){
+                    //console.log('then',$scope.appBusy, 'pageNum',pageNum);
                     //console.log(JSON.stringify(homeArticles));
                     if(homeArticles.length == 0) return;
 
-                    $scope.articles.push(homeArticles);
+                    angular.forEach(homeArticles, function(value, key){
+                        //console.log('sasa',value);
+                        $scope.articles.push(value);
+                    })
+                    
                     $scope.appBusy = false;
                     pageNum++;
 
